@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UserProfile from "./pages/UserProfile/UserProfile";
+import UserActivities from "./pages/UserActivities/UserActivities";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import { useState } from "react";
+import UserLayout from "./components/UserLayout/UserLayout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  const [activeUserId, setActiveUserId] = useState<number>(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ToastContainer/>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <UserLayout activeUserId={activeUserId}>
+                  <Dashboard />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/users/:id"
+              element={
+                <UserLayout activeUserId={activeUserId}>
+                  <UserProfile setActiveUserId={setActiveUserId} />
+                </UserLayout>
+              }
+            />
+            <Route path="/users/:id/activity" element={<UserActivities />} />
+          </Routes>
+        </BrowserRouter>
+    </>
   );
 }
 

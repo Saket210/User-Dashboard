@@ -1,0 +1,12 @@
+.dashboard-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dashboard-div p{
+    font-size: 20px;
+}
+.dashboard-div img{
+    margin-top: 50px;
+}
