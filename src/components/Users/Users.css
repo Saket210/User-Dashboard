@@ -1,4 +1,5 @@
 .users-container{
+    min-width: 300px;
     height: 91vh;
     display: flex;
     flex-direction: column;
@@ -15,6 +16,7 @@
     flex-direction: row;
     align-items: center;
     gap: 5px;
+    cursor: pointer;
     padding: 5px 10px;
     margin: 5px 5px;
     border-radius: 10px;
@@ -71,10 +73,12 @@
 }
 
 .loader {
-    width: 50px;
+    max-width: 50px;
     padding: 8px;
     aspect-ratio: 1;
-    margin-top: 70px;
+    margin: 25px 25px;
+    flex: 1;
+    align-self: center;
     border-radius: 50%;
     background: #25b09b;
     --_m: 
@@ -88,7 +92,7 @@
   }
   @keyframes l3 {to{transform: rotate(1turn)}}
 
-  @media (max-width:700px){
+  @media (max-width:800px){
     .cards-container{
       flex-direction: row;
       overflow-x: auto;
@@ -96,5 +100,8 @@
     }
     .users-container{
       height: auto;
+    }
+    .loader{
+      margin: 0px auto;
     }
   }
